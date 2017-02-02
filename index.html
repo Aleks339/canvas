@@ -2,11 +2,12 @@
 <html>
 <head>
 <meta charset="utf-8">
-<title>Документ без названия</title>
+<title>Drawing thing</title>
 </head>
 
 <body>
-<div id="canvas" width = "100" height = "100">Click to draw<br/></div>
+<div id="canvas" width = "100" height = "100">Click the left mouse button to draw.<br>
+Click the right one to save.<br/></div>
 
 <input type='color' name='color2' value='#3355cc' id = "colorPicker"/>
 
@@ -51,7 +52,7 @@
             }
             var x = e.pageX - this.offsetLeft;
             var y = e.pageY - this.offsetTop;
-            var radius = 6; // or whatever
+            var radius = 9; // or whatever
             var fillColor = document.getElementById('colorPicker').value;
             ctx.fillCircle(x, y, radius, fillColor);
         };
