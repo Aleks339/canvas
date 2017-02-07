@@ -3,13 +3,16 @@
 <head>
 <meta charset="utf-8">
 <title>Drawing thing</title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+
 </head>
 
 <body>
-<div id="canvas" width = "100" height = "100">Click the left mouse button to draw.<br>
+<div id="canvas" width = "500" height = "500">Click the left mouse button to draw.<br>
 Click the right one to save.<br/></div>
 
 <input type='color' name='color2' value='#3355cc' id = "colorPicker"/>
+<input type='range' min='1' max='100' id='brushSize'>
 
 <script>
 (function() {
@@ -22,8 +25,8 @@ Click the right one to save.<br/></div>
         var canvas = {};
         canvas.node = document.createElement('canvas');
         canvas.context = canvas.node.getContext('2d');
-        canvas.node.width = width || 100;
-        canvas.node.height = height || 100;
+        canvas.node.width = width || 500;
+        canvas.node.height = height || 500;
         parent.appendChild(canvas.node);
         return canvas;
     }
@@ -54,6 +57,7 @@ Click the right one to save.<br/></div>
             var y = e.pageY - this.offsetTop;
             var radius = 9; // or whatever
             var fillColor = document.getElementById('colorPicker').value;
+            var colorOfTheBrush = document.getElementById('brushSize').value;
             ctx.fillCircle(x, y, radius, fillColor);
         };
         canvas.node.onmousedown = function(e) {
@@ -65,7 +69,7 @@ Click the right one to save.<br/></div>
     }
 
     var container = document.getElementById('canvas');
-    init(container, 200, 200, '#ddd');
+    init(container, 500, 500, '#ddd');
 	
 	 // save canvas image as data url (png format by default)
       var dataURL = canvas.toDataURL();
@@ -76,5 +80,12 @@ Click the right one to save.<br/></div>
 
 })();
 	</script>
+    
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <script>
+     $("#brushSize").on("input", function(e) {
+        ctx.lineWidth = $(this).val()
+     });
+    </script>
 </body>
 </html>
