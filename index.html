@@ -12,7 +12,7 @@
 Click the right one to save.<br/></div>
 
 <input type='color' name='color2' value='#3355cc' id = "colorPicker"/>
-<input type='range' min='1' max='100' id='brushSize'>
+<input type='range' min='9' max='20' id='brushSize'>
 
 <script>
 (function() {
@@ -57,6 +57,7 @@ Click the right one to save.<br/></div>
             var y = e.pageY - this.offsetTop;
             var radius = 9; // or whatever
             var fillColor = document.getElementById('colorPicker').value;
+            var radius = document.getElementById('brushSize').value;
             var colorOfTheBrush = document.getElementById('brushSize').value;
             ctx.fillCircle(x, y, radius, fillColor);
         };
@@ -82,10 +83,5 @@ Click the right one to save.<br/></div>
 	</script>
     
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
-    <script>
-     $("#brushSize").on("input", function(e) {
-        ctx.lineWidth = $(this).val()
-     });
-    </script>
-</body>
+    </body>
 </html>
